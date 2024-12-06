@@ -1,0 +1,371 @@
+:root {
+    --primary-color: #f48024;
+    --secondary-color: #0077cc;
+    --background-color: #ffffff;
+    --text-color: #242729;
+    --border-color: #e4e6e8;
+}
+
+body {
+    width: 400px;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.container {
+    padding: 16px;
+}
+
+.header {
+    margin-bottom: 16px;
+}
+
+h1 {
+    font-size: 18px;
+    margin: 0 0 16px 0;
+    color: var(--primary-color);
+}
+
+.search-container {
+    display: flex;
+    gap: 8px;
+}
+
+#searchInput {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#searchInput:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(0, 119, 204, 0.1);
+}
+
+#searchButton {
+    padding: 8px 16px;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#searchButton:hover {
+    background-color: #005999;
+}
+
+.tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tab-button {
+    padding: 8px 16px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-color);
+    transition: color 0.2s;
+    position: relative;
+}
+
+.tab-button::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--secondary-color);
+    transform: scaleX(0);
+    transition: transform 0.2s;
+}
+
+.tab-button.active {
+    color: var(--secondary-color);
+}
+
+.tab-button.active::after {
+    transform: scaleX(1);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.result-item {
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    margin-bottom: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.result-item:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.result-title {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: block;
+    transition: color 0.2s;
+}
+
+.result-title:hover {
+    color: #005999;
+}
+
+.result-meta {
+    font-size: 12px;
+    color: #6a737c;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+.tags {
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.tag {
+    background-color: #e1ecf4;
+    color: var(--secondary-color);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 11px;
+    transition: background-color 0.2s;
+}
+
+.tag:hover {
+    background-color: #d0e3f1;
+}
+
+.actions {
+    margin-top: 8px;
+    display: flex;
+    gap: 8px;
+}
+
+.favorite-btn, .share-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #bbb;
+    padding: 4px 8px;
+    transition: all 0.2s;
+    border-radius: 4px;
+}
+
+.favorite-btn:hover, .share-btn:hover {
+    background-color: rgba(244, 128, 36, 0.1);
+    color: var(--primary-color);
+}
+
+.favorite-btn.active {
+    color: var(--primary-color);
+}
+
+.error-message {
+    background-color: #fdf2f2;
+    color: #9b1c1c;
+    padding: 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    animation: slideIn 0.3s ease-out;
+}
+
+.loading-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    gap: 10px;
+}
+
+.loading-spinner span {
+    font-size: 14px;
+    color: #666;
+}
+
+.loading-spinner .spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.toast.show {
+    opacity: 1;
+}
+
+.icon {
+    display: inline-block;
+    margin-right: 2px;
+}
+
+/* About tab styles */
+.about-content {
+    padding: 20px;
+    color: var(--text-color);
+}
+
+.about-content h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+.about-content h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.developer-title {
+    color: #FF6B00 !important;
+    font-size: 1.2em;
+    margin-top: 25px;
+}
+
+.about-content p {
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.about-content ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 20px;
+}
+
+.about-content li {
+    margin-bottom: 8px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.about-content li:before {
+    content: "•";
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+}
+
+.social-buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: 15px;
+    flex-wrap: nowrap;
+}
+
+.social-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 12px;
+    background-color: #FF6B00;
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 13px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.social-button:hover {
+    background-color: #FF8533;
+    transform: translateY(-1px);
+    text-decoration: none;
+    color: white;
+}
+
+.social-button .icon {
+    margin-right: 6px;
+    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.social-button svg {
+    width: 14px;
+    height: 14px;
+    vertical-align: middle;
+}
