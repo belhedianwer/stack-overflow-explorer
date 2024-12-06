@@ -80,6 +80,7 @@ specific functionality:
   - `ui.js`: Contains UI components and event handlers
   - `state.js`: Manages application state and tab navigation
   - `animations.js`: Provides smooth transitions and visual feedback
+  - `confetti.js`: Handles the confetti animation for favorites
 
 ### Building for Production
 
